@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.xuzhou.blog.dao.UsersInfoDAO">
+	<insert id="saveUser" parameterType="com.xuzhou.blog.bo.UsersInfo"  flushCache="true">
+		INSERT INTO T_USERS_INFO (ID, USER_NAME, PASSWORD) values(#{id}, #{userName}, #{password})
+	</insert>
+	
+	<update id="updateUser" parameterType="com.xuzhou.blog.bo.UsersInfo">
+		UPDATE T_USERS_INFO SET USER_NAME = #{userName}, PASSWORD = #{password} WHERE ID = #{id}
+	</update>
+	
+	<select id="getUserById" parameterType="java.lang.String" resultType="com.xuzhou.blog.bo.UsersInfo">
+		SELECT * FROM T_USERS_INFO WHERE ID = #{id}
+	</select>
+</mapper>
